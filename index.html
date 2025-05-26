@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href="/appDistributionHosting/">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="AppHosting and Distribution platform">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="app_hosting">
+  <link rel="apple-touch-icon" href="icons/web-app-manifest-192x192.png">
+
+  <!-- Favicon -->
+  <link id="favicon" rel="icon" href="icons/favicon_light.svg" type="image/svg">
+
+  <title>app_hosting</title>
+  <link rel="manifest" href="manifest.json">
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.14.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.0/firebase-auth.js"></script>
+  <script>
+    // Initialize Firebase (replace with your config from Firebase Console)
+    const firebaseConfig = {
+      apiKey: "AIzaSyCuh0t2zyGSLS2yDag_JYC0wE-21tFuzmk",
+      authDomain: "app-distribution-9073f.firebaseapp.com",
+      projectId: "app-distribution-9073f",
+      storageBucket: "app-distribution-9073f.firebasestorage.app",
+      messagingSenderId: "674992338674",
+      appId: "1:674992338674:web:6ecc44cfef21c78cc5826b",
+      measurementId: "G-F1N40YNKDP"
+    };
+    firebase.initializeApp(firebaseConfig);
+  </script>
+
+</head>
+<body>
+<!-- Flutter bootstrap script -->
+<script src="flutter_bootstrap.js" async></script>
+
+<!-- Favicon theme switching -->
+<script>
+  const favicon = document.getElementById("favicon");
+
+  function toLight() {
+    favicon.setAttribute("href", "icons/favicon_light.svg");
+  }
+
+  function toDark() {
+    favicon.setAttribute("href", "icons/favicon_dark.svg");
+  }
+
+  const setFavicon = () => {
+    const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    console.log(`isDark: ${isDark}`);
+    if (isDark) {
+      toDark();
+    } else {
+      toLight();
+    }
+  };
+
+  setFavicon();
+
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+    console.log(`changed to ${e.matches ? "dark" : "light"} mode`);
+    setFavicon();
+  });
+</script>
+</body>
+</html>
